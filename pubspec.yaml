@@ -1,0 +1,22 @@
+name: walle
+description: Wallpaper App.
+version: 1.0.0+1
+author: Tirth Patel
+environment:
+  sdk: ">2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  http:
+  shared_preferences:
+  url_launcher:
+  sqflite:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
