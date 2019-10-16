@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:walle/screens/details.dart';
 import 'package:walle/screens/home.dart';
 import 'package:walle/screens/settings.dart';
+
 import 'package:walle/utils/contants.dart';
 
 void main() {
@@ -42,6 +45,7 @@ class _AppState extends State<App> {
       routes: {
         '/': (context) => HomeScreen(),
         '/settings': (context) => SettingsScreen(updateBrightness),
+        '/details': (context) => DetailsScreen(),
       },
     );
   }
