@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           setState(() {
             _page++;
+            _wallpapers = [];
           });
         },
       ),
