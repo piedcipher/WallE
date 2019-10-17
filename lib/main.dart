@@ -41,6 +41,8 @@ class _AppState extends State<App> {
     return MaterialApp(
       theme: ThemeData(
         brightness: _brightness,
+        primarySwatch: Colors.indigo,
+        accentColor: Colors.pinkAccent,
       ),
       debugShowCheckedModeBanner: false,
       title: 'WallE',

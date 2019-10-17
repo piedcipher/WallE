@@ -42,6 +42,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         setState(() {});
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: Text('Added to favorites'),
+                          action: SnackBarAction(
+                            label: 'View',
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/favorites');
+                            },
+                          ),
                         ));
                       });
                     },

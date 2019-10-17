@@ -29,10 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
               ),
               child: Center(
-                child: Image.asset(
-                  'assets/app.png',
-                  width: 50,
-                  height: 50,
+                child: FlutterLogo(
+                  size: 50,
+                  colors: Colors.indigo,
                 ),
               ),
             ),
@@ -50,8 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
             InkWell(
               splashColor: Colors.white,
               child: ListTile(
-                onTap: () =>
-                    Navigator.pushNamed(_scaffold.currentContext, '/settings'),
+                onTap: () {
+                  Navigator.pop(_scaffold.currentContext);
+                  Navigator.pushNamed(_scaffold.currentContext, '/settings');
+                },
                 leading: Icon(Icons.settings),
                 title: Text('Settings'),
               ),
