@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:walle/screens/details.dart';
+import 'package:walle/screens/favorites.dart';
 import 'package:walle/screens/home.dart';
 import 'package:walle/screens/settings.dart';
 
+import 'package:walle/utils/db_provider.dart';
 import 'package:walle/utils/contants.dart';
 
-void main() {
+void main() async {
   runApp(App());
+  kDatabase = await DatabaseProvider.open();
 }
 
 class App extends StatefulWidget {
@@ -46,6 +49,7 @@ class _AppState extends State<App> {
         '/': (context) => HomeScreen(),
         '/settings': (context) => SettingsScreen(updateBrightness),
         '/details': (context) => DetailsScreen(),
+        '/favorites': (context) => FavoritesScreen(),
       },
     );
   }

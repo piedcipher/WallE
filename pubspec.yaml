@@ -13,6 +13,7 @@ dependencies:
   shared_preferences:
   url_launcher:
   sqflite:
+  intent:
 
 dev_dependencies:
   flutter_test:

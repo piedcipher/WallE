@@ -21,16 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        label: Text('Next'),
-        icon: Icon(Icons.navigate_next),
-        onPressed: () {
-          setState(() {
-            _page++;
-            _wallpapers = [];
-          });
-        },
-      ),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
@@ -44,6 +34,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 50,
                   height: 50,
                 ),
+              ),
+            ),
+            InkWell(
+              splashColor: Colors.white,
+              child: ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(_scaffold.currentContext, '/favorites');
+                },
+                leading: Icon(Icons.favorite),
+                title: Text('Favorites'),
               ),
             ),
             InkWell(
@@ -91,6 +92,46 @@ class _HomeScreenState extends State<HomeScreen> {
       key: _scaffold,
       appBar: AppBar(
         title: Text('WallE'),
+        actions: <Widget>[
+          _page == 1
+              ? Row(
+                  children: <Widget>[
+                    Text(_page.toString()),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _page++;
+                          _wallpapers = [];
+                        });
+                      },
+                      icon: Icon(Icons.navigate_next),
+                    ),
+                  ],
+                )
+              : Row(
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _page--;
+                          _wallpapers = [];
+                        });
+                      },
+                      icon: Icon(Icons.navigate_before),
+                    ),
+                    Text(_page.toString()),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _page++;
+                          _wallpapers = [];
+                        });
+                      },
+                      icon: Icon(Icons.navigate_next),
+                    ),
+                  ],
+                ),
+        ],
       ),
       body: _wallpapers.isEmpty
           ? FutureBuilder(
