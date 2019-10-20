@@ -81,22 +81,33 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                       ),
                     ),
                   );
-                  return _renderFavorites();
+                  return _renderFavorites(forceRefresh: false);
                 }
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               },
             )
-          : _renderFavorites(),
+          : _renderFavorites(forceRefresh: true),
     );
   }
 
-  Widget _renderFavorites() => ListView(
-        children: <Widget>[
-          ..._fetchedFavorites,
-        ],
-      );
+  Widget _renderFavorites({bool forceRefresh}) {
+    if (forceRefresh) {
+      _getFavorites().then((favorites) {
+        if (favorites.length != _fetchedFavorites.length) {
+          setState(() {
+            _fetchedFavorites = [];
+          });
+        }
+      });
+    }
+    return ListView(
+      children: <Widget>[
+        ..._fetchedFavorites,
+      ],
+    );
+  }
 
   Future _getFavorites() async {
     List<Map<String, dynamic>> result = await kDatabase.query(kTable);
