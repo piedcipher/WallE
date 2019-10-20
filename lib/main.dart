@@ -22,6 +22,8 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   SharedPreferences _sharedPreferences;
   Brightness _brightness = Brightness.light;
+  MaterialColor _primarySwatch = Colors.indigo;
+  MaterialAccentColor _accentColor = Colors.pinkAccent;
 
   @override
   void initState() {
@@ -35,6 +37,12 @@ class _AppState extends State<App> {
       _brightness = _sharedPreferences.getInt(kPreferenceBrightnessKey) == 0
           ? Brightness.dark
           : Brightness.light;
+      _primarySwatch = primarySwatches[
+              _sharedPreferences.getString(kPreferencePrimarySwatchKey)] ??
+          Colors.indigo;
+      _accentColor = accentColors[
+              _sharedPreferences.getString(kPreferenceAccentColorKey)] ??
+          Colors.pinkAccent;
     });
   }
 
@@ -43,15 +51,16 @@ class _AppState extends State<App> {
     return MaterialApp(
       theme: ThemeData(
         brightness: _brightness,
-        primarySwatch: Colors.indigo,
-        accentColor: Colors.pinkAccent,
+        primarySwatch: _primarySwatch,
+        accentColor: _accentColor,
       ),
       debugShowCheckedModeBanner: false,
       title: 'WallE',
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
-        '/settings': (context) => SettingsScreen(updateBrightness),
+        '/settings': (context) => SettingsScreen(
+            updateBrightness, updatePrimarySwatch, updateAccentColor),
         '/details': (context) => DetailsScreen(),
         '/favorites': (context) => FavoritesScreen(),
       },
@@ -61,6 +70,18 @@ class _AppState extends State<App> {
   void updateBrightness(Brightness brightness) {
     setState(() {
       _brightness = brightness;
+    });
+  }
+
+  void updatePrimarySwatch(MaterialColor primarySwatch) {
+    setState(() {
+      _primarySwatch = primarySwatch;
+    });
+  }
+
+  void updateAccentColor(MaterialAccentColor accentColor) {
+    setState(() {
+      _accentColor = accentColor;
     });
   }
 }

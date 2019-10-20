@@ -20,6 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Builder(
+        builder: (context) => FloatingActionButton(
+          onPressed: () {
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text('Coming Soon'),
+            ));
+          },
+          child: Icon(Icons.search),
+        ),
+      ),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[

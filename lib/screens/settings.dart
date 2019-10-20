@@ -4,8 +4,11 @@ import 'package:walle/utils/contants.dart';
 
 class SettingsScreen extends StatefulWidget {
   final Function updateBrightness;
+  final Function updatePrimarySwatch;
+  final Function updateAccentColor;
 
-  SettingsScreen(this.updateBrightness);
+  SettingsScreen(
+      this.updateBrightness, this.updatePrimarySwatch, this.updateAccentColor);
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -14,6 +17,8 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   SharedPreferences _sharedPreferences;
   int _brightness;
+  String _primarySwatch;
+  String _accentColor;
 
   @override
   void initState() {
@@ -25,6 +30,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
       _brightness = _sharedPreferences.getInt(kPreferenceBrightnessKey) ?? 1;
+      _primarySwatch =
+          _sharedPreferences.getString(kPreferencePrimarySwatchKey) ?? 'Indigo';
+      _accentColor =
+          _sharedPreferences.getString(kPreferenceAccentColorKey) ?? 'Pink';
     });
   }
 
@@ -66,6 +75,51 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ],
                 ),
+                DropdownButtonFormField(
+                  value: _primarySwatch,
+                  onChanged: (newPrimarySwatch) async {
+                    setState(() {
+                      _primarySwatch = newPrimarySwatch;
+                    });
+                    _sharedPreferences.setString(
+                        kPreferencePrimarySwatchKey, newPrimarySwatch);
+                    widget
+                        .updatePrimarySwatch(primarySwatches[newPrimarySwatch]);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Primary Swatch',
+                  ),
+                  items: [
+                    ...primarySwatches.keys.map(
+                      (primarySwatch) => DropdownMenuItem(
+                        child: Text(primarySwatch),
+                        value: primarySwatch,
+                      ),
+                    ),
+                  ],
+                ),
+                DropdownButtonFormField(
+                  value: _accentColor,
+                  onChanged: (newAccentColor) async {
+                    setState(() {
+                      _accentColor = newAccentColor;
+                    });
+                    _sharedPreferences.setString(
+                        kPreferenceAccentColorKey, newAccentColor);
+                    widget.updateAccentColor(accentColors[newAccentColor]);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Accent Color',
+                  ),
+                  items: [
+                    ...accentColors.keys.map(
+                      (accentColor) => DropdownMenuItem(
+                        child: Text(accentColor),
+                        value: accentColor,
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
