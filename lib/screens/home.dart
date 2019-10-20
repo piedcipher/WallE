@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'package:http/http.dart' as http;
+
 import 'package:walle/utils/api_constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.indigo[100],
               ),
               child: Center(
                 child: FlutterLogo(
@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             '\nMade with \u2764 by Tirth',
                             style: TextStyle(fontWeight: FontWeight.w500),
                           ),
-                        )
+                        ),
                       ]);
                 },
                 leading: Icon(Icons.info),
