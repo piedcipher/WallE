@@ -1,0 +1,2 @@
+const kAccessKey = '';
+const kSecretKey = '';
