@@ -5,7 +5,7 @@
 Wallpaper App built using [Flutter](https://flutter.dev) & [Unsplash API](https://unsplash.com/developers)
 
 ## Story
-When I created [iWallE](https://github.com/piedcipher/iWallE) (which is a CLI wallpaper app), I always wanted to create a wallpaper for Mobile. I attempted to create it in Native Android but it was not an easy process, and I gave up. After 2 years, I've created WallE (this app) using Flutter :blue_heart: in just 2 hours! So, what are you waiting for?! Go ahead and build beautiful things with Flutter :heart:
+When I created [iWallE](https://github.com/piedcipher/iWallE) (which is a CLI wallpaper app), I always wanted to create a wallpaper app for Mobile. I attempted to create it in Native Android but it was not an easy process, and I gave up. After 2 years, I've created WallE (this app) using Flutter :blue_heart: in just 2 hours! So, what are you waiting for?! Go ahead and build beautiful things with Flutter :heart:
 
 ## Features
 - Unlimited beautiful wallpapers
