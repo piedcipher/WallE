@@ -55,10 +55,19 @@ When I created [iWallE](https://github.com/piedcipher/iWallE) (which is a CLI wa
 
 ## Dependencies
 - [http](https://pub.dev/packages/http)
+
 - [shared_preferences](https://pub.dev/packages/shared_preferences)
+
 - [url_launcher](https://pub.dev/packages/url_launcher)
+
 - [sqflite](https://pub.dev/packages/sqflite)
+
 - [intent](https://pub.dev/packages/intent)
+
+## Setup
+- Register a new application [here](https://unsplash.com/developers)
+
+- Put API keys in [api_constants.dart](https://github.com/piedcipher/WallE/blob/master/lib/utils/api_constants.dart)
 
 ## Getting Started
 
