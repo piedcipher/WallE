@@ -23,7 +23,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void getDefaults() async {
     _sharedPreferences = await SharedPreferences.getInstance();
-    _brightness = _sharedPreferences.getInt(kPreferenceBrightnessKey);
+    setState(() {
+      _brightness = _sharedPreferences.getInt(kPreferenceBrightnessKey) ?? 1;
+    });
   }
 
   @override
@@ -39,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Column(
               children: <Widget>[
                 DropdownButtonFormField(
-                  value: _brightness ?? 1,
+                  value: _brightness,
                   onChanged: (newBrightness) async {
                     setState(() {
                       _brightness = newBrightness;

@@ -31,9 +31,11 @@ class _AppState extends State<App> {
 
   void getDefaults() async {
     _sharedPreferences = await SharedPreferences.getInstance();
-    _brightness = _sharedPreferences.getInt(kPreferenceBrightnessKey) == 0
-        ? Brightness.dark
-        : Brightness.light;
+    setState(() {
+      _brightness = _sharedPreferences.getInt(kPreferenceBrightnessKey) == 0
+          ? Brightness.dark
+          : Brightness.light;
+    });
   }
 
   @override
@@ -56,7 +58,7 @@ class _AppState extends State<App> {
     );
   }
 
-  void updateBrightness(Brightness brightness) async {
+  void updateBrightness(Brightness brightness) {
     setState(() {
       _brightness = brightness;
     });
